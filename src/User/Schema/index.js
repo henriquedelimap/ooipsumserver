@@ -2,6 +2,7 @@ import { gql } from "apollo-server";
 
 export const UserSchema = gql`
   type User {
+    id: ID
     username: String!
     password: String!
     perfil: String!

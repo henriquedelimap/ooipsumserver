@@ -31,7 +31,7 @@ export const UserResolver = {
             console.log("deletado com sucesso", deletedRecord);
           }
         }
-      );
+      ).clone();
     },
   },
 };

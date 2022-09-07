@@ -1,3 +1,4 @@
+import bcryptjs from "bcryptjs";
 import User from "../Model/index.js";
 
 export const UserResolver = {
@@ -11,6 +12,8 @@ export const UserResolver = {
   },
   Mutation: {
     async createUser(_, { user }) {
+      const passwordHashed = await bcryptjs.hash(user.password, 13);
+      user.password = passwordHashed;
       const newUser = new User(user);
       return newUser.save();
     },

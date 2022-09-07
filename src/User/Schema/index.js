@@ -5,6 +5,8 @@ export const UserSchema = gql`
     username: String!
     password: String!
     perfil: String!
+    createdAt: String!
+    updatedAt: String!
   }
 
   input UserInput {

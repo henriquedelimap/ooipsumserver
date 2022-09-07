@@ -4,7 +4,9 @@ import mongoose from "mongoose";
 import { UserSchema } from "./User/Schema/index.js";
 import { UserResolver } from "./User/Resolver/index.js";
 import dotenv from "dotenv";
-
+import { authSchema } from "./Auth/Schema/index.js";
+import { authResolvers } from "./Auth/Resolver/index.js";
+import { AuthenticationAssurance } from "./middlewares/AuthenticationAssurance.js";
 dotenv.config();
 
 export const db = {
@@ -26,12 +28,13 @@ mongoose
   .then(() => console.log("database connected"))
   .catch((error) => console.log("database failed", error));
 
-const typeDefs = mergeTypeDefs([UserSchema]);
-const resolvers = [UserResolver];
+const typeDefs = mergeTypeDefs([UserSchema, authSchema]);
+const resolvers = [UserResolver, authResolvers];
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  authChecker: AuthenticationAssurance,
 });
 
 server

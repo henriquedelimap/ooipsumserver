@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import Perfil from "../../Perfil/Model/index.js";
 
 const Links = new mongoose.Schema({
-  name: { type: String, require: true, unique: true },
+  name: { type: String, require: true },
   url: { type: String, require: true },
   createdAt: { type: Date, required: false, default: Date.now },
   updatedAt: { type: Date, required: false, default: Date.now },

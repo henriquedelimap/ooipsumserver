@@ -1,6 +1,6 @@
 import bcryptjs from "bcryptjs";
 import User from "../Model/index.js";
-
+import Perfil from "../../Perfil/Model/index.js";
 export const UserResolver = {
   Query: {
     async users() {
@@ -10,6 +10,7 @@ export const UserResolver = {
       return await User.findOne({ username: username });
     },
   },
+
   Mutation: {
     async createUser(_, { user }) {
       const passwordHashed = await bcryptjs.hash(user.password, 13);

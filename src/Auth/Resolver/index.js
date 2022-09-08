@@ -18,7 +18,7 @@ export const authResolvers = {
       const { secret, expiresIn } = AuthConfig.jwt;
 
       const token = jsonwebtoken.sign({}, secret, {
-        subjevt: `"${user.username}"`,
+        subject: `"${user.username}"`,
         expiresIn,
       });
 

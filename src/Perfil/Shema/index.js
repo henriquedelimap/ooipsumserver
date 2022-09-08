@@ -3,13 +3,20 @@ import { gql } from "apollo-server";
 export const PerfilSchema = gql`
   type Perfil {
     id: ID
-    user: User
+    username: String
+    bio: String
+    links: [Link]
+    accountType: String
     createdAt: String!
     updatedAt: String!
   }
 
   input PerfilInput {
-    user: UserInput
+    username: String
+    userId: String
+    bio: String
+    links: [LinkInput]
+    accountType: String
   }
 
   type Query {
@@ -18,7 +25,7 @@ export const PerfilSchema = gql`
   }
 
   type Mutation {
-    createPerfil(user: UserInput!): Perfil!
+    createPerfil(perfil: PerfilInput!): Perfil!
     updatePerfil(Perfilname: String, Perfil: PerfilInput): Perfil!
     deletePerfil(Perfilname: String!): Perfil
   }

@@ -15,13 +15,21 @@ export const UserResolver = {
     async createUser(_, { user }) {
       const passwordHashed = await bcryptjs.hash(user.password, 13);
       user.password = passwordHashed;
+
+      const newPerfil = {
+        username: user.username,
+      };
+      user.perfil = newPerfil;
+
+      const perfil = new Perfil(newPerfil);
       const newUser = new User(user);
+
       return newUser.save();
     },
     async updateUser(_, { username, user }) {
-      await User.findOneAndUpdate({ username: username }, user, {
+      return await User.findOneAndUpdate({ username: username }, user, {
         new: true,
-        userFindAndModify: false,
+        useFindAndModify: false,
       });
     },
     async deleteUser(_, { username }) {

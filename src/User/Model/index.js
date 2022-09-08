@@ -1,20 +1,65 @@
 import mongoose from "mongoose";
-import Perfil from "../../Perfil/Model/index.js";
 
-const Links = new mongoose.Schema({
-  name: { type: String, require: true },
-  url: { type: String, require: true },
-  createdAt: { type: Date, required: false, default: Date.now },
-  updatedAt: { type: Date, required: false, default: Date.now },
+const Perfil = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+  },
+  bio: {
+    type: String,
+    required: false,
+  },
+  accountType: {
+    type: String,
+    enum: [
+      "Criador(a) de conteúdo digital",
+      "pessoal",
+      "serviço",
+      "produto",
+      "serviço/produto",
+      "vendedor",
+      "colecionador",
+      "consultor",
+      "corretor",
+    ],
+    default: "pessoal",
+  },
 });
 
 const UserSchema = new mongoose.Schema({
-  username: { type: String, require: true, unique: true },
-  password: { type: String, require: true },
-  links: { type: [Links] },
-  email: { type: String, require: true },
-  createdAt: { type: Date, required: false, default: Date.now },
-  updatedAt: { type: Date, required: false, default: Date.now },
+  username: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  userType: {
+    type: String,
+    enum: ["dev", "admin", "premium", "free"],
+    default: "free",
+  },
+
+  perfil: {
+    type: Perfil,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    required: false,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    required: false,
+    default: Date.now,
+  },
 });
 
 const User = mongoose.model("user", UserSchema);

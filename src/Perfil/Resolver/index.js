@@ -10,8 +10,12 @@ export const PerfilResolver = {
     },
   },
   Mutation: {
-    async createPerfil(parent, _) {
-      const newPerfil = new Perfil(parent);
+    async createPerfil(_, { user }) {
+      const perfil = {
+        username: user.username,
+        userId: user._id,
+      };
+      const newPerfil = new Perfil(perfil);
       return newPerfil.save();
     },
     async updatePerfil(_, { username, user }) {

@@ -9,6 +9,8 @@ import { authResolvers } from "./Auth/Resolver/index.js";
 import { AuthenticationAssurance } from "./middlewares/AuthenticationAssurance.js";
 import { PerfilResolver } from "./Perfil/Resolver/index.js";
 import { PerfilSchema } from "./Perfil/Shema/index.js";
+import { LinkSchema } from "./Links/Schema/index.js";
+import { LinkResolver } from "./Links/Resolver/index.js";
 dotenv.config();
 
 export const db = {
@@ -30,8 +32,13 @@ mongoose
   .then(() => console.log("database connected"))
   .catch((error) => console.log("database failed", error));
 
-const typeDefs = mergeTypeDefs([UserSchema, authSchema, PerfilSchema]);
-const resolvers = [UserResolver, authResolvers, PerfilResolver];
+const typeDefs = mergeTypeDefs([
+  UserSchema,
+  authSchema,
+  PerfilSchema,
+  LinkSchema,
+]);
+const resolvers = [UserResolver, authResolvers, PerfilResolver, LinkResolver];
 
 const server = new ApolloServer({
   typeDefs,

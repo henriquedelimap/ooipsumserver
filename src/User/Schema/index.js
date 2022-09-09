@@ -16,6 +16,7 @@ export const UserSchema = gql`
     username: String
     email: String
     password: String
+    userType: String
   }
 
   type Query {

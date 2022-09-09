@@ -32,13 +32,8 @@ mongoose
   .then(() => console.log("database connected"))
   .catch((error) => console.log("database failed", error));
 
-const typeDefs = mergeTypeDefs([
-  UserSchema,
-  authSchema,
-  PerfilSchema,
-  LinkSchema,
-]);
-const resolvers = [UserResolver, authResolvers, PerfilResolver, LinkResolver];
+const typeDefs = mergeTypeDefs([UserSchema, authSchema, PerfilSchema]);
+const resolvers = [UserResolver, authResolvers, PerfilResolver];
 
 const server = new ApolloServer({
   typeDefs,

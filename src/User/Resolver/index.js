@@ -21,8 +21,9 @@ export const UserResolver = {
       };
       user.perfil = newPerfil;
 
-      const perfil = new Perfil(newPerfil);
       const newUser = new User(user);
+
+      const perfil = new Perfil(newPerfil);
 
       return newUser.save();
     },

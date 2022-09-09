@@ -23,6 +23,7 @@ const Perfil = new mongoose.Schema({
       "corretor",
     ],
     default: "pessoal",
+    required: false,
   },
 });
 

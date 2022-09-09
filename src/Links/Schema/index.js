@@ -2,18 +2,18 @@ import { gql } from "apollo-server";
 
 export const LinkSchema = gql`
   type Link {
-    id: ID!
-    userId: String!
+    id: ID
+    userId: String
     name: String
     url: String
-    createdAt: String!
-    updatedAt: String!
+    createdAt: String
+    updatedAt: String
   }
 
   input LinkInput {
-    userId: String!
-    name: String!
-    url: String!
+    userId: String
+    name: String
+    url: String
   }
 
   type Query {

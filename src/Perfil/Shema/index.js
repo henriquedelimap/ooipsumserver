@@ -5,7 +5,6 @@ export const PerfilSchema = gql`
     id: ID
     username: String
     bio: String
-    links: [Link]
     accountType: String
     createdAt: String!
     updatedAt: String!
@@ -15,7 +14,6 @@ export const PerfilSchema = gql`
     username: String
     userId: String
     bio: String
-    links: [LinkInput]
     accountType: String
   }
 

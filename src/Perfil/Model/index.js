@@ -1,14 +1,6 @@
 import mongoose from "mongoose";
 import User from "../../User/Model/index.js";
 
-const Link = new mongoose.Schema({
-  name: { type: String, required: true },
-  url: { type: String, required: true },
-  userId: { type: String, required: true },
-  createdAt: { type: Date, required: false, default: Date.now },
-  updatedAt: { type: Date, required: false, default: Date.now },
-});
-
 const PerfilSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -18,10 +10,7 @@ const PerfilSchema = new mongoose.Schema({
     type: String,
     required: false,
   },
-  links: {
-    type: [Link],
-    required: false,
-  },
+
   accountType: {
     type: String,
     enum: [
@@ -35,7 +24,17 @@ const PerfilSchema = new mongoose.Schema({
       "consultor",
       "corretor",
     ],
-    default: "",
+    default: "pessoal",
+  },
+  createdAt: {
+    type: Date,
+    required: false,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    required: false,
+    default: Date.now,
   },
 });
 

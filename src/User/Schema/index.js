@@ -8,6 +8,8 @@ export const UserSchema = gql`
     email: String!
     perfil: Perfil
     userType: String!
+    hasInstagramAuthentication: Boolean
+    themaType: String
     createdAt: String!
     updatedAt: String!
   }
@@ -16,6 +18,8 @@ export const UserSchema = gql`
     username: String
     email: String
     perfil: PerfilInput
+    themaType: String
+    hasInstagramAuthentication: Boolean
     password: String
     userType: String
   }

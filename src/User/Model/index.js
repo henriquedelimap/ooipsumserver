@@ -45,10 +45,16 @@ const UserSchema = new mongoose.Schema({
     enum: ["dev", "admin", "premium", "free"],
     default: "free",
   },
-
   perfil: {
     type: Perfil,
     required: true,
+  },
+  hasInstagramAuthentication: {
+    type: Boolean,
+    default: false,
+  },
+  themaType: {
+    type: String,
   },
   createdAt: {
     type: Date,

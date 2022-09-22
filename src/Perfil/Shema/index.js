@@ -5,7 +5,6 @@ export const PerfilSchema = gql`
     id: ID
     username: String
     bio: String
-    accountType: String
     createdAt: String!
     updatedAt: String!
   }
@@ -14,7 +13,6 @@ export const PerfilSchema = gql`
     username: String
     userId: String
     bio: String
-    accountType: String
   }
 
   type Query {

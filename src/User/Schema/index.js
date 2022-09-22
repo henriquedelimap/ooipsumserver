@@ -3,11 +3,11 @@ import { gql } from "apollo-server";
 export const UserSchema = gql`
   type User {
     id: ID
-    username: String!
-    password: String!
-    email: String!
+    username: String
+    password: String
+    email: String
     perfil: Perfil
-    userType: String!
+    accountType: String
     hasInstagramAuthentication: Boolean
     themaType: String
     createdAt: String!
@@ -19,6 +19,7 @@ export const UserSchema = gql`
     email: String
     perfil: PerfilInput
     themaType: String
+    accountType: String
     hasInstagramAuthentication: Boolean
     password: String
     userType: String
@@ -30,7 +31,7 @@ export const UserSchema = gql`
   }
 
   type Mutation {
-    createUser(user: UserInput!): User!
+    createUser(user: UserInput): User!
     updateUser(username: String, user: UserInput): User
     deleteUser(username: String!): User
   }
